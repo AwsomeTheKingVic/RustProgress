@@ -63,6 +63,7 @@ fn main() {
 
 }
 
+Binding and mutability
 ===========================Use mut to mark a variable as mutable.===============================================
 // Fill the blanks in the code to make it compile
 
@@ -219,6 +220,7 @@ fn main() {
 
 }
 
+Scope
 =====================A scope is the range within the program for which the item is valid.========================================================
 // Fix the error with the use of define_x
 
@@ -384,4 +386,311 @@ fn main() {
 
 }
 
-===========================================================================================
+
+Shadowing
+====================You can declare a new variable with the same name as a previous variable=======================================================================
+// Remove a line in the code to make it compile
+
+6.1
+fn main() {
+
+    let mut x: i32 = 1;
+
+    x = 7;
+
+    // Shadowing and re-binding
+
+    let x = x; 
+
+    x += 3;
+
+
+    let y = 4;
+
+    // Shadowing
+
+    let y = "I can also be bound to text!"; 
+
+    println!("Success!");
+
+}
+
+--------------------------------------------------------------------------------------------------------------
+//for the first part we are redeclaring x but not telling the system that it is mutable well meaning it can change so
+//after finding where x is being declared but now being told its mut then lets add it like as so
+
+6.2
+fn main() {
+
+    let mut x: i32 = 1;
+
+    x = 7;
+
+    // Shadowing and re-binding
+
+    let mut x = x; 
+
+    x += 3;
+
+
+    let y = 4;
+
+    // Shadowing
+
+    let y = "I can also be bound to text!"; 
+
+    println!("Success!");
+
+}
+
+------------------------------------------------------------------------------------------------------------------
+//for the second part y is being used twice first for holding a integer and the second for holding a string lets give
+//this information to the code
+
+6.3
+fn main() {
+
+    let mut x: i32 = 1;
+
+    x = 7;
+
+    // Shadowing and re-binding
+
+    let mut x = x; 
+
+    x += 3;
+
+
+    let y: i32 = 4;
+
+    // Shadowing
+
+    let y: &str = "I can also be bound to text!"; 
+
+    println!("Success!");
+
+}
+
+------------------------------------------------------------------------------------------------------------------
+//now the code will compile and run but you will notice that that x is basically initilizing its self by x calling x
+//this would be the one we remove
+
+6.4
+fn main() {
+
+    let mut x: i32 = 1;
+
+    x = 7;
+
+    // Shadowing and re-binding
+
+    x += 3;
+
+
+    let y: i32 = 4;
+
+    // Shadowing
+
+    let y: &str = "I can also be bound to text!"; 
+
+    println!("Success!");
+
+}
+
+-------------------------------------------------------------------------------------------------------------------
+//completed code
+
+6.5
+fn main() {
+
+    let mut x: i32 = 1;
+
+    x = 7;
+
+    // Shadowing and re-binding
+
+    x += 3;
+
+
+    let y: i32 = 4;
+
+    // Shadowing
+
+    let y: &str = "I can also be bound to text!"; 
+
+    println!("Success!");
+
+}
+
+Unused variables
+=========================================Two distinct solutions========================================================================
+//solve the problem with two disticn solutions
+
+7.1
+fn main() {
+
+    let x = 1; 
+
+}
+
+// Warning: unused variable: `x`
+
+--------------------------------------------------------------------------------------------------
+// one way is to add a _ infornt of the x
+
+7.2
+fn main() {
+
+    let _x = 1; 
+
+}
+
+// Warning: unused variable: `x`
+
+----------------------------------------------------------------------------------------------
+//second way is to add #[allow(unused_variables)] which is not the best way
+
+7.3
+#[allow(unused_variables)]
+fn main() {
+
+    let x = 1; 
+
+}
+
+// Warning: unused variable: `x`
+
+--------------------------------------------------------------------------------------------
+//completed code
+
+7.4
+fn main() {
+
+    let _x = 1; 
+
+}
+
+or
+
+#[allow(unused_variables)]
+fn main() {
+
+    let x = 1; 
+
+}
+
+Destructuring
+============================ We can use a pattern with let to destructure a tuple to separate variables================================================================================
+// Fix the error below with least amount of modification
+
+8.1
+fn main() {
+
+    let (x, y) = (1, 2);
+
+    x += 2;
+
+    assert_eq!(x, 3);
+
+    assert_eq!(y, 2);
+
+    println!("Success!");
+
+}
+
+-----------------------------------------------------------------------------------------------------------------
+// the tuple is like an array of information but in this case we need x to equal 3 and since its changing we have to
+//make it mutable
+
+8.2
+fn main() {
+
+    let (mut x, y) = (1, 2);
+
+    x += 2;
+
+    assert_eq!(x, 3);
+
+    assert_eq!(y, 2);
+
+    println!("Success!");
+
+}
+
+---------------------------------------------------------------------------------------------------------------
+//completed code
+
+8.3
+fn main() {
+
+    let (mut x, y) = (1, 2);
+
+    x += 2;
+
+    assert_eq!(x, 3);
+
+    assert_eq!(y, 2);
+
+    println!("Success!");
+
+}
+
+Destructuring assignments
+==================================You can now use tuple, slice, and struct patterns as the left-hand side of an assignment.=============================================================================
+//this allows to declare two variables that then can be assigned like below
+
+8.1
+fn main() {
+
+    let (x, y);
+
+    (x,..) = (3, 4);
+
+    [.., y] = [1, 2];
+
+    // Fill the blank to make the code work
+    assert_eq!([x,y], __);
+
+    println!("Success!");
+
+} 
+
+--------------------------------------------------------------------------------------------------------------
+//we declared the two variables and then you can give them values like the two variations below it when you dont want to
+//give a variable a value you can enter .. otherwise you can enter the varible in this case x will be equal to 3 and y
+// to 2
+
+8.2
+fn main() {
+
+    let (x, y);
+
+    (x,..) = (3, 4);
+
+    [.., y] = [1, 2];
+
+    // Fill the blank to make the code work
+    assert_eq!([x,y], [3,2]);
+
+    println!("Success!");
+
+}
+
+---------------------------------------------------------------------------------------------------------------
+//completed code
+
+8.3
+fn main() {
+
+    let (x, y);
+
+    (x,..) = (3, 4);
+
+    [.., y] = [1, 2];
+
+    // Fill the blank to make the code work
+    assert_eq!([x,y], [3,2]);
+
+    println!("Success!");
+
+}
