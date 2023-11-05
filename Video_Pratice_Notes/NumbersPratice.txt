@@ -1,0 +1,562 @@
+Numbers
+
+Integer
+=============================================================================
+// Remove something to make it work
+
+1.1
+fn main() {
+
+    let x: i32 = 5;
+
+    let mut y: u32 = 5;
+
+    y = x;
+    
+    let z = 10; // Type of z ? 
+
+    println!("Success!");
+
+}
+
+------------------------------------------------------------------------------
+// first lets solve for the top half of the code from let x to the y = x
+// so first will notice that x is a i32 and y is a u32 so if it would they would work it wouldnt in rust you can not combine them together must only interact with a type similar to its own
+// so now that we know that we are changing y so that means we can erase the u32 because it asked use to erase something to make it work you can write i32 but rust defualt is an i32
+
+1.2
+fn main() {
+
+    let x: i32 = 5;
+
+    let mut y = 5;
+
+    y = x;
+    
+    let z = 10; // Type of z ? 
+
+    println!("Success!");
+
+}
+
+--------------------------------------------------------------------------------
+//now the next half its asking for the type of z so the data type would be a i32
+
+1.3
+fn main() {
+
+    let x: i32 = 5;
+
+    let mut y = 5;
+
+    y = x;
+    
+    let z: i32 = 10; // Type of z ? 
+
+    println!("Success!");
+
+}
+
+--------------------------------------------------------------------------------
+//completed code
+
+1.4
+fn main() {
+
+    let x: i32 = 5;
+
+    let mut y = 5;
+
+    y = x;
+    
+    let z: i32 = 10; // Type of z ? 
+
+    println!("Success!");
+
+}
+
+Integer
+=================================================================================
+// Fill the blank
+
+2.1
+fn main() {
+
+    let v: u16 = 38_u8 as __;
+
+    println!("Success!");
+
+}
+
+---------------------------------------------------------------------------------
+//we are just filling in the blank here as you can see we have v that is u16 then trying to a a 38 u8 but as we learned that not possible
+//so in order for it work we use as in order to change into something we can use so fill the black with u16
+
+2.2
+fn main() {
+
+    let v: u16 = 38_u8 as u16;
+
+    println!("Success!");
+
+}
+
+----------------------------------------------------------------------------------
+//completed code
+
+2.3
+fn main() {
+
+    let v: u16 = 38_u8 as u16;
+
+    println!("Success!");
+
+}
+
+Integer
+====================================================================================
+// Modify `assert_eq!` to make it work
+
+3.1
+fn main() {
+
+    let x = 5;
+
+    assert_eq!("u32".to_string(), type_of(&x));
+
+    println!("Success!");
+
+}
+
+// Get the type of given variable, return a string representation of the type  , e.g "i8", "u8", "i32", "u32"
+fn type_of<T>(_: &T) -> String {
+
+    format!("{}", std::any::type_name::<T>())
+
+}
+
+------------------------------------------------------------------------------------
+//now as you can see out variable does not have a type and assert_eq!() is looking to match a string of u32 to a custome function return of type_of()
+//in type_of() when it runs will return a string of the variable type that was sent
+//so in order for the code to run we have to change the x type to u32
+
+3.2
+fn main() {
+
+    let x: u32 = 5;
+
+    assert_eq!("u32".to_string(), type_of(&x));
+
+    println!("Success!");
+
+}
+
+// Get the type of given variable, return a string representation of the type  , e.g "i8", "u8", "i32", "u32"
+fn type_of<T>(_: &T) -> String {
+
+    format!("{}", std::any::type_name::<T>())
+
+}
+
+------------------------------------------------------------------------------------
+//completed code
+
+3.3
+fn main() {
+
+    let x: u32 = 5;
+
+    assert_eq!("u32".to_string(), type_of(&x));
+
+    println!("Success!");
+
+}
+
+// Get the type of given variable, return a string representation of the type  , e.g "i8", "u8", "i32", "u32"
+fn type_of<T>(_: &T) -> String {
+
+    format!("{}", std::any::type_name::<T>())
+
+}
+
+Integer
+======================================================================================
+// Fill the blanks to make it work
+
+4.1
+fn main() {
+
+    assert_eq!(i8::MAX, __); 
+    assert_eq!(u8::MAX, __); 
+
+    println!("Success!");
+	
+}
+
+--------------------------------------------------------------------------------------
+// in this one it is just checking if the max number of the type is equal to the number on the right
+//the max number for a signed interger is 127 and the max number for the unsigned is 255
+
+4.2
+fn main() {
+
+    assert_eq!(i8::MAX, 127); 
+    assert_eq!(u8::MAX, 255); 
+
+    println!("Success!");
+	
+}
+
+--------------------------------------------------------------------------------------
+//completed code
+
+4.2
+fn main() {
+
+    assert_eq!(i8::MAX, 127); 
+    assert_eq!(u8::MAX, 255); 
+
+    println!("Success!");
+	
+}
+
+Integer
+======================================================================================
+// Fix errors and panics to make it work
+
+5.1
+fn main() {
+
+   let v1 = 251_u8 + 8;
+   
+   let v2 = i8::checked_add(251, 8).unwrap();
+   
+   println!("{},{}",v1,v2);
+   
+}
+
+---------------------------------------------------------------------------------------
+// first v1 will require us to fix its values type as you may have noticed 251 + 8 is 259 that goes above the u8 limit so we have to move to the next type a u16 and assign the type to the variables
+
+5.2
+fn main() {
+
+   let v1: u16 = 251_u16 + 8_u16;
+   
+   let v2 = i8::checked_add(251, 8).unwrap();
+   
+   println!("{},{}",v1,v2);
+   
+}
+
+---------------------------------------------------------------------------------------
+// second v2 checked_add() is safer version from just assing it manually all thats needed is assigning it the correct data type in this case 251 + 8 still equal 259 and that is larger then a i8 so move up to the next type
+
+5.3
+fn main() {
+
+   let v1: u16 = 251_u16 + 8_u16;
+   
+   let v2: i16 = i16::checked_add(251, 8).unwrap();
+   
+   println!("{},{}",v1,v2);
+   
+}
+
+---------------------------------------------------------------------------------------
+// completed code
+
+5.4
+fn main() {
+
+   let v1 = 251_u8 + 8;
+   
+   let v2 = i8::checked_add(251, 8).unwrap();
+   
+   println!("{},{}",v1,v2);
+   
+}
+
+Integer
+======================================================================================
+// Modify `assert!` to make it work
+
+6.1
+fn main() {
+
+    let v = 1_024 + 0xff + 0o77 + 0b1111_1111;
+    
+	assert!(v == 1579);
+
+    println!("Success!");
+
+}
+
+--------------------------------------------------------------------------------------
+// as you can see that the inputs for v are diffrent but dont worry it is normal they are just diffrent forms of writing numbers
+// First is Decimals, hexadecimal, Octol, Binary
+// Numbers are 1024, 255, 63, 255 if you add it up you will get 1597 lets change it
+
+6.2
+fn main() {
+
+    let v = 1_024 + 0xff + 0o77 + 0b1111_1111;
+    
+	assert!(v == 1597);
+
+    println!("Success!");
+
+}
+
+--------------------------------------------------------------------------------------
+//completed code
+
+6.3
+fn main() {
+
+    let v = 1_024 + 0xff + 0o77 + 0b1111_1111;
+    
+	assert!(v == 1597);
+
+    println!("Success!");
+
+}
+
+Floating-Point
+======================================================================================
+// Fill the blank to make it work
+
+7.1
+fn main() {
+
+    let x = 1_000.000_1; // ?
+	
+    let y: f32 = 0.12; // f32
+	
+    let z = 0.01_f64; // f64
+
+    assert_eq!(type_of(&x), "__".to_string());
+	
+    println!("Success!");
+	
+}
+
+fn type_of<T>(_: &T) -> String {
+
+    format!("{}", std::any::type_name::<T>())
+	
+}
+
+--------------------------------------------------------------------------------------
+// we need to assign the type for x and its floating so by the name we need a float since x is going to the thousand we would need a f64 go higher if need be
+// for y and z as you can see y is done correctly basing it off that we can then add z data type as f64
+// the assert_eq!() needs the black filled and it looks like we are using x and the function is checking if the data types match so we would need to put f64
+
+7.2
+fn main() {
+
+    let x: f64 = 1_000.000_1; // ?
+	
+    let y: f32 = 0.12; // f32
+	
+    let z: f64 = 0.01_f64; // f64
+
+    assert_eq!(type_of(&x), "f64".to_string());
+	
+    println!("Success!");
+	
+}
+
+fn type_of<T>(_: &T) -> String {
+
+    format!("{}", std::any::type_name::<T>())
+	
+}
+
+--------------------------------------------------------------------------------------
+// completed code
+
+7.3
+fn main() {
+
+    let x: f64 = 1_000.000_1; // ?
+	
+    let y: f32 = 0.12; // f32
+	
+    let z: f64 = 0.01_f64; // f64
+
+    assert_eq!(type_of(&x), "f64".to_string());
+	
+    println!("Success!");
+	
+}
+
+fn type_of<T>(_: &T) -> String {
+
+    format!("{}", std::any::type_name::<T>())
+	
+}
+
+Floating-Point
+======================================================================================
+// Make it work in two distinct ways
+
+8.1
+fn main() {
+
+    assert!(0.1+0.2==0.3);
+
+    println!("Success!");
+
+}
+
+--------------------------------------------------------------------------------------
+// the problem is that floats are not precise so it reall depends on what you need when it comes to floats 
+// one way is two lower the precision of the float by going lower so a f32 instead of a f64 lets change it to f32 data type
+
+8.2
+fn main() {
+
+    assert!(0.1_f32 + 0.2_f32 == 0.3_f32);
+
+    println!("Success!");
+
+}
+
+--------------------------------------------------------------------------------------
+//second way is using the term as so in this case instead of using a _ we would use 'as'
+
+8.3
+fn main() {
+
+    assert!(0.1 as f32 + 0.2 as f32 == 0.3 as f32);
+
+    println!("Success!");
+
+}
+
+---------------------------------------------------------------------------------------
+//completed code
+
+8.4
+fn main() {
+
+    assert!(0.1_f32 + 0.2_f32 == 0.3_f32);
+
+    println!("Success!");
+
+}
+
+OR
+
+fn main() {
+
+    assert!(0.1 as f32 + 0.2 as f32 == 0.3 as f32);
+
+    println!("Success!");
+
+}
+
+Range
+======================================================================================
+// Two goals: 1. Modify assert! to make it work 2. Make println! output: 97 - 122
+
+9.1
+fn main() {
+
+    let mut sum = 0;
+	
+    for i in -3..2 {
+	
+        sum += i
+		
+    }
+
+    assert!(sum == -3);
+
+    for c in 'a'..='z' {
+	
+        println!("{}",c);
+		
+    }
+	
+}
+
+--------------------------------------------------------------------------------------
+// first in order to find out what the assert must be we will follow the for loop 
+
+9.2
+fn main() {
+
+    let mut sum = 0;
+	
+    for i in -3..2 {
+	
+        sum += i
+		
+    }
+
+    assert!(sum == -3);
+
+    for c in 'a'..='z' {
+	
+        println!("{}",c);
+		
+    }
+	
+}
+
+--------------------------------------------------------------------------------------
+
+Range
+======================================================================================
+// Fill the blanks
+
+10.1
+use std::ops::{Range, RangeInclusive};
+
+fn main() {
+
+    assert_eq!((1..__), Range{ start: 1, end: 5 });
+    assert_eq!((1..__), RangeInclusive::new(1, 5));
+
+    println!("Success!");
+
+}
+
+--------------------------------------------------------------------------------------
+
+Computations
+======================================================================================
+// Fill the blanks and fix the errors
+
+11.1
+fn main() {
+
+    // Integer addition
+    assert!(1u32 + 2 == __);
+
+    // Integer subtraction
+    assert!(1i32 - 2 == __);
+    assert!(1u8 - 2 == -1); 
+    
+    assert!(3 * 50 == __);
+
+    assert!(9.6 / 3.2 == 3.0); // error ! make it work
+
+    assert!(24 % 5 == __);
+    // Short-circuiting boolean logic
+    assert!(true && false == __);
+    assert!(true || false == __);
+    assert!(!true == __);
+
+    // Bitwise operations
+    println!("0011 AND 0101 is {:04b}", 0b0011u32 & 0b0101);
+    println!("0011 OR 0101 is {:04b}", 0b0011u32 | 0b0101);
+    println!("0011 XOR 0101 is {:04b}", 0b0011u32 ^ 0b0101);
+    println!("1 << 5 is {}", 1u32 << 5);
+    println!("0x80 >> 2 is 0x{:x}", 0x80u32 >> 2);
+	
+}
+
+--------------------------------------------------------------------------------------
