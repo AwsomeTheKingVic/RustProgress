@@ -484,6 +484,8 @@ fn main() {
 
 --------------------------------------------------------------------------------------
 // first in order to find out what the assert must be we will follow the for loop 
+// i = -3 sum + i = -3 then its keeps moving up the for loop until we get -6 + 1 = -5
+//the assert function will be -5
 
 9.2
 fn main() {
@@ -496,7 +498,7 @@ fn main() {
 		
     }
 
-    assert!(sum == -3);
+    assert!(sum == -5);
 
     for c in 'a'..='z' {
 	
@@ -507,6 +509,53 @@ fn main() {
 }
 
 --------------------------------------------------------------------------------------
+// we have to print 97 -  122 in the second for loop
+// in order to get that to work we must convert our char into a number so we will use u8 this converts the char into the ASCII Value
+
+9.3
+fn main() {
+
+    let mut sum = 0;
+	
+    for i in -3..2 {
+	
+        sum += i
+		
+    }
+
+    assert!(sum == -5);
+
+    for c in 'a'..='z' {
+	
+        println!("{}",c as u8);
+		
+    }
+	
+}
+
+--------------------------------------------------------------------------------------
+//completed code
+
+9.4
+fn main() {
+
+    let mut sum = 0;
+	
+    for i in -3..2 {
+	
+        sum += i
+		
+    }
+
+    assert!(sum == -5);
+
+    for c in 'a'..='z' {
+	
+        println!("{}",c as u8);
+		
+    }
+	
+}
 
 Range
 ======================================================================================
@@ -525,6 +574,35 @@ fn main() {
 }
 
 --------------------------------------------------------------------------------------
+//this is how ranges work in rust so it is telling use what to place in the missing spots and that is five because the range starts at 1 and ends at 5
+//the std library that was used just lets us know we can use the range and rangeinclusive what rangeinclusive does is it will actually use the ending number instead of stopping one short
+
+10.2
+use std::ops::{Range, RangeInclusive};
+
+fn main() {
+
+    assert_eq!((1..5), Range{ start: 1, end: 5 });
+    assert_eq!((1..=5), RangeInclusive::new(1, 5));
+
+    println!("Success!");
+
+}
+
+--------------------------------------------------------------------------------------
+//completed code
+
+10.3
+use std::ops::{Range, RangeInclusive};
+
+fn main() {
+
+    assert_eq!((1..5), Range{ start: 1, end: 5 });
+    assert_eq!((1..=5), RangeInclusive::new(1, 5));
+
+    println!("Success!");
+
+}
 
 Computations
 ======================================================================================
@@ -545,6 +623,7 @@ fn main() {
     assert!(9.6 / 3.2 == 3.0); // error ! make it work
 
     assert!(24 % 5 == __);
+	
     // Short-circuiting boolean logic
     assert!(true && false == __);
     assert!(true || false == __);
@@ -560,3 +639,192 @@ fn main() {
 }
 
 --------------------------------------------------------------------------------------
+//lets go steop by step
+//for addition we can just add 1 + 2 = 3 and because 1 was assinged u32 it will automaticaly assign u32 to the others
+//now subtraction it works the same way 1 - 2 = -1 and it will share the datatype but second one its a little tricky
+//the math works but the datatype doesnt since its unsigned it can not go to negative numbers so we can switch it to signed
+
+11.2
+fn main() {
+
+    // Integer addition
+    assert!(1u32 + 2 == 3);
+    assert!(1u32 + 2u32 == 3u32);
+
+    // Integer subtraction
+    assert!(1i32 - 2 == -1);
+    assert!(1i32 - 2i32 == -1i32);
+	
+    assert!(1i8 - 2i8 == -1i8); 
+    
+    assert!(3 * 50 == __);
+
+    assert!(9.6 / 3.2 == 3.0); // error ! make it work
+
+    assert!(24 % 5 == __);
+	
+    // Short-circuiting boolean logic
+    assert!(true && false == __);
+    assert!(true || false == __);
+    assert!(!true == __);
+
+    // Bitwise operations
+    println!("0011 AND 0101 is {:04b}", 0b0011u32 & 0b0101);
+    println!("0011 OR 0101 is {:04b}", 0b0011u32 | 0b0101);
+    println!("0011 XOR 0101 is {:04b}", 0b0011u32 ^ 0b0101);
+    println!("1 << 5 is {}", 1u32 << 5);
+    println!("0x80 >> 2 is 0x{:x}", 0x80u32 >> 2);
+	
+}
+
+--------------------------------------------------------------------------------------
+//now for the multiplication the total is 150 and the default datatype can handle that size default being i32
+//devision we have a similar problem the datatype is to good in this case allowing it to account numbers farther in percision then what we need so lets change it to a f32 instead
+//now for remainders pretty simple 24 / 5 we will have a remainder of 4
+
+11.3
+fn main() {
+
+    // Integer addition
+    assert!(1u32 + 2 == 3);
+    assert!(1u32 + 2u32 == 3u32);
+
+    // Integer subtraction
+    assert!(1i32 - 2 == -1);
+    assert!(1i32 - 2i32 == -1i32);
+	
+    assert!(1i8 - 2i8 == -1i8); 
+    
+    assert!(3 * 50 == 150);
+
+    assert!(9.6 as f32 / 3.2 as f32 == 3.0  as f32); // error ! make it work
+
+    assert!(24 % 5 == 4);
+	
+    // Short-circuiting boolean logic
+    assert!(true && false == __);
+    assert!(true || false == __);
+    assert!(!true == __);
+
+    // Bitwise operations
+    println!("0011 AND 0101 is {:04b}", 0b0011u32 & 0b0101);
+    println!("0011 OR 0101 is {:04b}", 0b0011u32 | 0b0101);
+    println!("0011 XOR 0101 is {:04b}", 0b0011u32 ^ 0b0101);
+    println!("1 << 5 is {}", 1u32 << 5);
+    println!("0x80 >> 2 is 0x{:x}", 0x80u32 >> 2);
+	
+}
+
+--------------------------------------------------------------------------------------
+// true and false both conditions arent true so false
+// true or false one condition is true so true
+// !true not true so false
+
+11.4
+fn main() {
+
+    // Integer addition
+    assert!(1u32 + 2 == 3);
+    assert!(1u32 + 2u32 == 3u32);
+
+    // Integer subtraction
+    assert!(1i32 - 2 == -1);
+    assert!(1i32 - 2i32 == -1i32);
+	
+    assert!(1i8 - 2i8 == -1i8); 
+    
+    assert!(3 * 50 == 150);
+
+    assert!(9.6 as f32 / 3.2 as f32 == 3.0  as f32); // error ! make it work
+
+    assert!(24 % 5 == 4);
+	
+    // Short-circuiting boolean logic
+    assert!(true && false == false);
+    assert!(true || false == true);
+    assert!(!true == false);
+
+    // Bitwise operations
+    println!("0011 AND 0101 is {:04b}", 0b0011u32 & 0b0101);
+    println!("0011 OR 0101 is {:04b}", 0b0011u32 | 0b0101);
+    println!("0011 XOR 0101 is {:04b}", 0b0011u32 ^ 0b0101);
+    println!("1 << 5 is {}", 1u32 << 5);
+    println!("0x80 >> 2 is 0x{:x}", 0x80u32 >> 2);
+	
+}
+
+--------------------------------------------------------------------------------------
+// for the bitwise operations you will notice while running it will go through each bit unit and match it to the other set of bit units and run the according result in this case
+// for  0011 and 0101 it will give 0001 since only the first units match and the others work as intended
+// the last two are bitwise shift operations they are shifting the locaition on the bit either left or right by a certain amount
+
+11.5
+fn main() {
+
+    // Integer addition
+    assert!(1u32 + 2 == 3);
+    assert!(1u32 + 2u32 == 3u32);
+
+    // Integer subtraction
+    assert!(1i32 - 2 == -1);
+    assert!(1i32 - 2i32 == -1i32);
+	
+    assert!(1i8 - 2i8 == -1i8); 
+    
+    assert!(3 * 50 == 150);
+
+    assert!(9.6 as f32 / 3.2 as f32 == 3.0  as f32); // error ! make it work
+
+    assert!(24 % 5 == 4);
+	
+    // Short-circuiting boolean logic
+    assert!(true && false == false);
+    assert!(true || false == true);
+    assert!(!true == false);
+
+    // Bitwise operations
+    println!("0011 AND 0101 is {:04b}", 0b0011u32 & 0b0101);
+    println!("0011 OR 0101 is {:04b}", 0b0011u32 | 0b0101);
+    println!("0011 XOR 0101 is {:04b}", 0b0011u32 ^ 0b0101);
+    println!("1 << 5 is {}", 1u32 << 5);
+    println!("0x80 >> 2 is 0x{:x}", 0x80u32 >> 2);
+	
+}
+
+--------------------------------------------------------------------------------------
+// completed code
+
+11.6
+fn main() {
+
+    // Integer addition
+    assert!(1u32 + 2 == 3);
+    assert!(1u32 + 2u32 == 3u32);
+
+    // Integer subtraction
+    assert!(1i32 - 2 == -1);
+    assert!(1i32 - 2i32 == -1i32);
+	
+    assert!(1i8 - 2i8 == -1i8); 
+    
+    assert!(3 * 50 == 150);
+
+    assert!(9.6 as f32 / 3.2 as f32 == 3.0  as f32); // error ! make it work
+
+    assert!(24 % 5 == 4);
+	
+    // Short-circuiting boolean logic
+    assert!(true && false == false);
+    assert!(true || false == true);
+    assert!(!true == false);
+
+    // Bitwise operations
+    println!("0011 AND 0101 is {:04b}", 0b0011u32 & 0b0101);
+    println!("0011 OR 0101 is {:04b}", 0b0011u32 | 0b0101);
+    println!("0011 XOR 0101 is {:04b}", 0b0011u32 ^ 0b0101);
+    println!("1 << 5 is {}", 1u32 << 5);
+    println!("0x80 >> 2 is 0x{:x}", 0x80u32 >> 2);
+	
+}
+
+====================================================================================
