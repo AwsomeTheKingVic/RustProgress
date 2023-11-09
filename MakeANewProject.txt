@@ -1,0 +1,81 @@
+Not a cargo project
+===============================================================================================================
+//will make a new directory and moves to that directory
+//change directory by moving to the location you want it to be made
+
+mkdir "%USERPROFILE%\projects"
+cd /d "%USERPROFILE%\projects"
+
+---------------------------------------------------------------------------------------------------------------
+
+//will make a new directory and moves to that directory
+//this should be used for project names
+
+mkdir hello_world
+cd hello_world
+
+---------------------------------------------------------------------------------------------------------------
+
+//rustc will compile and check you code and .\main.exe will then run and give you a exe file you can click
+rustc main.rs
+.\main.exe
+
+---------------------------------------------------------------------------------------------------------------
+
+//you can run main.rs to pop up the source code
+main.rs
+
+Cargo Project
+===============================================================================================================
+//makes a new directory and moves us in
+cargo new hello_cargo
+cd hello_cargo
+
+---------------------------------------------------------------------------------------------------------------
+
+//build the project and run it
+cargo build
+.\target\debug\hello_cargo.exe
+
+---------------------------------------------------------------------------------------------------------------
+
+//to do both at the same time
+cargo run
+
+---------------------------------------------------------------------------------------------------------------
+
+//to just check the code for bugs
+cargo check
+
+---------------------------------------------------------------------------------------------------------------
+
+//will make a released form the project for user allowing it to boot slower but run faster
+cargo build --release
+//make sure when testing use the released version for actual test on performance
+
+---------------------------------------------------------------------------------------------------------------
+
+//cloce a repository may need git
+git clone example.org/someproject
+cd someproject
+cargo build
+
+Dependencies
+===============================================================================================================
+//you add dependencies by going to the cargo.toml and adding it below the dependencies header
+[dependencies]
+rand = "0.8.5"
+
+// can add a ^ for it to get the a version from the current up to the until the next version number then stop
+rand = "^0.8.5"
+
+
+Updates
+===============================================================================================================
+//will update the dependencies
+cargo update
+
+Documentation
+===============================================================================================================
+//need to see the documentation for your code and for the dependencies if rustc can access them
+cargo doc --open
