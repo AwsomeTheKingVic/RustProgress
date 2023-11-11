@@ -1,0 +1,1 @@
+C:\Users\andre\Desktop\Rust\RustProgress\Content_Calculator\food_content_calculator\target\debug\food_content_calculator.exe: C:\Users\andre\Desktop\Rust\RustProgress\Content_Calculator\food_content_calculator\src\main.rs

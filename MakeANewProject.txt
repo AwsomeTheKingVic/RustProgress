@@ -1,3 +1,7 @@
+//for me
+===================
+Desktop\Rust\RustProgress\Projects
+===================
 Not a cargo project
 ===============================================================================================================
 //will make a new directory and moves to that directory
