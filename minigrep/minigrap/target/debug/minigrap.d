@@ -1,0 +1,1 @@
+C:\Users\andre\Desktop\Rust\RustProgress\minigrep\minigrap\target\debug\minigrap.exe: C:\Users\andre\Desktop\Rust\RustProgress\minigrep\minigrap\src\lib.rs C:\Users\andre\Desktop\Rust\RustProgress\minigrep\minigrap\src\main.rs
